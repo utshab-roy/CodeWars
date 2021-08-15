@@ -12,15 +12,15 @@ public class AreTheySame {
      * @return
      */
     public static boolean comp(int[] a, int[] b) {
-
-        if (a == null || a.length == 0 || b == null || b.length == 0)
+        if (a == null || b == null )
             return false;
         if (a.length != b.length )
             return false;
+        if (a.length == 0 && b.length == 0)
+            return true;
 
         boolean flag = true;
         int count = 0;
-
 
         for (int i = 0; i < b.length; i++) {
             for (int j = 0; j < a.length; j++) {
