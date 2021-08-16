@@ -17,7 +17,11 @@ public class DuplicateEncoder {
         for (int i = 0; i < chars.length; i++) {
             // check if the char has multiple occurrence
             count = word.length() - word.replace(Character.toString(chars[i]), "").length();
-            // count operation is not fully clear, how do I know that word.replace().length() returns occurrence
+             /**
+              * count operation is not fully clear, how do I know that word.replace().length() returns occurrence
+              * answer: replace with "" string actually shrinks down the string for that particular string
+              * so when we deduct it from the original string we get the number of occurrence
+             */
             if (count == 1)
                 str = str + "(";
             else
