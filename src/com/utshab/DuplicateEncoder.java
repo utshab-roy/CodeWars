@@ -1,6 +1,13 @@
 package com.utshab;
 
 public class DuplicateEncoder {
+    /**
+     * problem link
+     * https://www.codewars.com/kata/54b42f9314d9229fd6000d9c
+     *
+     * @param word
+     * @return string
+     */
     static String encode(String word){
         word = word.toLowerCase();
         char[] chars = word.toCharArray();
