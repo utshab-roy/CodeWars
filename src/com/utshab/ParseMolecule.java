@@ -21,9 +21,17 @@ public class ParseMolecule {
         int len = ch.length;
 
         String key = "";
-        int val = 0;
+        int val = -1;
 
         for (int i = 0; i < ch.length; i++) {
+            if (key != ""){
+                if (map.containsKey(key)){
+                    map.put(key, (int)map.get(key) + 1);
+                }else{
+                    map.put(key, 1);
+                }
+            }
+
             if (ch[i] >= 'A' && ch[i] <= 'Z'){
                 key = ch[i] + "";
                 int nextIndex = i + 1;
@@ -53,6 +61,6 @@ public class ParseMolecule {
     }
 
     public static void main(String[] args) {
-        getAtoms("Mg2O");
+        getAtoms("H2SO4");
     }
 }
