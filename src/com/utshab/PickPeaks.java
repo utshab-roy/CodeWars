@@ -21,20 +21,25 @@ public class PickPeaks {
         } // peaks handle end
 
         // for handle the plateaus
-        for (int i = 0; i < arr.length; i++) {
-            if (i == 0 || i == arr.length - 1) // this two values cannot be plateaus
-                continue;
+        boolean flag = true;
+        int position = 1;
+        for (int i = 1; i < arr.length - 1; i++) {
+            if (arr[0] >= arr[i] || arr[i] <= arr[arr.length - 1]  ){
+                flag = false;
+                break;
+            }
 
-            boolean flag = false;
-            for (int j = i; j < arr.length; j++) {
-                if (arr[i] > arr[i - 1] && arr[j] == arr[i] && arr[i] > arr[arr.length - 1]) {
-                    flag = true;
+            for (int j = i; j < arr.length - 1; j++) {
+                if (arr[i] != arr[j]) {
+                    flag = false;
+                    break;
                 }
             }
-            if (flag) {
-                pos.add(i);
-                peaks.add(arr[i]);
-            }
+
+        } // end of for loop
+        if (flag) {
+            pos.add(position);
+            peaks.add(arr[position]);
         }
 
         map.put("pos", pos);
@@ -44,6 +49,6 @@ public class PickPeaks {
     }
 
     public static void main(String[] args) {
-        getPeaks(new int[]{1, 2, 2, 2, 3});
+        getPeaks(new int[]{1, 2, 2, 2, 1});
     }
 }
