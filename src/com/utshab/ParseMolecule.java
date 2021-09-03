@@ -12,7 +12,66 @@ public class ParseMolecule {
      * @param formula
      * @return
      */
+
     public static Map<String,Integer> getAtoms(String formula) {
+        // Your code here!
+        HashMap map =  new HashMap<String,Integer>();
+        char[] ch = formula.toCharArray();
+        int len = ch.length;
+
+        // making a map which contains all the molecule name and initial val 0
+        for (int i = 0; i < ch.length; i++) {
+            String key;
+            if (ch[i] >= 'A' && ch[i] <= 'Z'){
+                key = ch[i] + "";
+                int nextIndex = i + 1;
+                if (nextIndex < len){
+                    if (ch[nextIndex] >= 'a' && ch[nextIndex] <= 'z'){
+                        key = String.valueOf(ch[i])  + String.valueOf(ch[++i]);
+                    }
+                    else {
+                        key =   ch[i] + "";
+                    }
+                }
+                map.put(key, 0);
+            } // end of if it is [A-Z, a-z]
+        } // end of making key for the molecule
+
+
+        for (int i = 0; i < ch.length; i++) {
+            // is it a symbol [, (
+            // is it a later H, Mg
+            String key;
+            if (ch[i] >= 'A' && ch[i] <= 'Z'){
+                key = ch[i] + "";
+                int nextIndex = i + 1;
+                if (nextIndex < len){
+                    if (ch[nextIndex] >= 'a' && ch[nextIndex] <= 'z'){
+                        key = String.valueOf(ch[i])  + String.valueOf(ch[++i]);
+                    }
+                    else {
+                        key =   ch[i] + "";
+                    }
+                }
+            } // end of if it is [A-Z, a-z]
+
+            // is it number 1,2,3
+            if (Character.isDigit(ch[i])){
+                int val = Character.getNumericValue(ch[i]);
+
+            }
+
+        } // end of for loop
+
+        System.out.println(map);
+        return map;
+    }
+
+    public static void main(String[] args) {
+        getAtoms("Mg(OH)2");
+    }
+
+    public static Map<String,Integer> getAtoms2(String formula) {
         // Your code here!
 
         HashMap map =  new HashMap<String,Integer>();
@@ -37,7 +96,7 @@ public class ParseMolecule {
                 int nextIndex = i + 1;
                 if (nextIndex < len){
                     if (ch[nextIndex] >= 'a' && ch[nextIndex] <= 'z'){
-                      key = String.valueOf(ch[i])  + String.valueOf(ch[++i]);
+                        key = String.valueOf(ch[i])  + String.valueOf(ch[++i]);
                     }
                     else {
                         key =   ch[i] + "";
@@ -58,9 +117,5 @@ public class ParseMolecule {
 
         System.out.println(map);
         return map;
-    }
-
-    public static void main(String[] args) {
-        getAtoms("H2SO4");
     }
 }
