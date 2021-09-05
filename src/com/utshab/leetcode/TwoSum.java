@@ -3,6 +3,10 @@ package com.utshab.leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * problem link
+ * https://leetcode.com/problems/two-sum/
+ */
 public class TwoSum {
     public static int[] twoSum(int[] nums, int target) {
         for (int i = 0; i < nums.length; i++) {
