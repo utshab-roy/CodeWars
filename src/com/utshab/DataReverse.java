@@ -12,7 +12,7 @@ public class DataReverse {
      */
     public static int[] dataReverse(int[] data) {
         int len = data.length;
-        if (len == 0 || len == 8)
+        if (len == 0 || len == 8) // if there is only one or no segment then nothing to do
             return data;
 
         int numOfSegment = len / 8;
@@ -28,20 +28,20 @@ public class DataReverse {
         int startVal = 0;
         for (int i = 1; i <= numOfSegment; i++) {
             int endVal = i * 8;
-            for (int j = startVal; j < endVal - 4; j++) {
+            int loopEndIndex = endVal - 4;
+            for (int j = startVal; j < loopEndIndex; j++) {
                 int temp = data[j];
-                data[j] = data[endVal - j - 1]; // problem is in this line
-                data[endVal - j - 1] = temp;
+                data[j] = data[endVal - 1];
+                data[endVal - 1] = temp;
+                endVal--;
             }
-
-            startVal = endVal;
+            startVal = i * 8;
         }
-
-        System.out.println(Arrays.toString(data));
         return data;
     }
 
     public static void main(String[] args) {
-        dataReverse(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8});
+        //passed all the test cases but failed in the attempt
+        System.out.println(Arrays.toString(dataReverse(new int[]{1, 2, 3, 4, 5, 6, 7, 8})));
     }
 }
