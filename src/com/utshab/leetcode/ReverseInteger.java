@@ -1,6 +1,13 @@
 package com.utshab.leetcode;
 
 public class ReverseInteger {
+    /**
+     * problem link
+     * https://leetcode.com/problems/reverse-integer/
+     *
+     * @param x
+     * @return
+     */
     public int reverse(int x) {
         boolean negative = false;
         if (x < 0) {
