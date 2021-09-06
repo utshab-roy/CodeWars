@@ -11,37 +11,38 @@ public class DataReverse {
      * @return
      */
     public static int[] dataReverse(int[] data) {
-        int len = data.length;
+        int[] myArray = data.clone(); // for random test pass making copy of the original array
+        int len = myArray.length;
         if (len == 0 || len == 8) // if there is only one or no segment then nothing to do
-            return data;
+            return myArray;
 
         int numOfSegment = len / 8;
 
         // reverse the whole array
-        for (int i = 0; i < data.length / 2; i++) {
-            int temp = data[i];
-            data[i] = data[data.length - i - 1];
-            data[data.length - i - 1] = temp;
+        for (int i = 0; i < myArray.length / 2; i++) {
+            int temp = myArray[i];
+            myArray[i] = myArray[myArray.length - i - 1];
+            myArray[myArray.length - i - 1] = temp;
         }
 
-        // now we have to reverse each segment (8 values as chunk data)
+        // now we have to reverse each segment (8 values as chunk myArray)
         int startVal = 0;
         for (int i = 1; i <= numOfSegment; i++) {
             int endVal = i * 8;
             int loopEndIndex = endVal - 4;
             for (int j = startVal; j < loopEndIndex; j++) {
-                int temp = data[j];
-                data[j] = data[endVal - 1];
-                data[endVal - 1] = temp;
+                int temp = myArray[j];
+                myArray[j] = myArray[endVal - 1];
+                myArray[endVal - 1] = temp;
                 endVal--;
             }
             startVal = i * 8;
         }
-        return data;
+        return myArray;
     }
 
     public static void main(String[] args) {
         //passed all the test cases but failed in the attempt
-        System.out.println(Arrays.toString(dataReverse(new int[]{1, 2, 3, 4, 5, 6, 7, 8})));
+        System.out.println(Arrays.toString(dataReverse(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8})));
     }
 }
