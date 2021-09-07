@@ -1,6 +1,10 @@
 package com.utshab;
 
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class PigLatin {
     /**
      * problem link
@@ -28,7 +32,19 @@ public class PigLatin {
         return finalStr.trim();
     }
 
+    public static String pigItBest(String str) {
+        String punctuation = "!?,.";
+        List<String> words = new ArrayList(Arrays.asList(str.split(" ")));
+        List<String> pigLatinWords = new ArrayList<String>();
+
+        for (String word : words) {
+            String newWord = !punctuation.contains(word) ? word.substring(1) + word.charAt(0) + "ay" : word;
+            pigLatinWords.add(newWord);
+        }
+        return String.join(" ", pigLatinWords);
+    }
+
     public static void main(String[] args) {
-        pigIt("Pig latin is cool !"); // igPay atinlay siay oolcay
+        pigItBest("Pig latin is cool !"); // igPay atinlay siay oolcay
     }
 }
