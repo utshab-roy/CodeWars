@@ -21,8 +21,15 @@ public class DigitalRoot {
         return sum;
     }
 
+    public static int digital_root2(int n) { // good clever approach
+        while(n > 9){
+            n = n/10 + n % 10; // it does the same thing
+        }
+        return(n);
+    }
+
     public static void main(String[] args) {
-        int val = digital_root(132189); //132189  -->  1 + 3 + 2 + 1 + 8 + 9 = 24  -->  2 + 4 = 6
+        int val = digital_root2(123); //132189  -->  1 + 3 + 2 + 1 + 8 + 9 = 24  -->  2 + 4 = 6
         System.out.println(val);
     }
 }
