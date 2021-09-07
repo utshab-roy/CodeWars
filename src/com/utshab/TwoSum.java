@@ -4,6 +4,14 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 public class TwoSum {
+    /**
+     * problem link
+     * https://www.codewars.com/kata/52c31f8e6605bcc646000082
+     *
+     * @param numbers
+     * @param target
+     * @return
+     */
     public static int[] twoSum(int[] numbers, int target)
     {
         HashMap<Integer, Integer> map = new HashMap<>();
